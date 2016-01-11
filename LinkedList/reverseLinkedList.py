@@ -48,6 +48,28 @@ class singlyLinkedList():
     while cur_node:
       print cur_node.value,
       cur_node = cur_node.next
+      
+def reverseList(head):
+    reverse_list = singlyLinkedList()
+    cur = head
+    while cur:
+        new_node = Node(cur.val)
+        #print ("inserting at head %s" % new_node.val)
+        singlyLinkedList.insertAtHead(new_node)
+        cur = cur.next
+    return reverse_list.head
+
+def printList(head):
+    cur = head
+    while cur:
+        print (cur.val)
+        cur = cur.next
+
+def printRev(node):
+    if node == None:
+        return
+    printRev(node.next)
+    print (node.val)
 
 def isIntersecting(nodeA, nodeB):
   curA = nodeA
@@ -103,6 +125,10 @@ def main():
   s2.insertAtTail(n3)
   s2.insertAtTail(n4)
   assert(isIntersecting(s1.head, s2.head))
+  rev = reverseList(sl.head)
+  printList(rev)
+  print ("print reverse list")
+  printRev(rev)
   
 if __name__ == "__main__":
   main()
