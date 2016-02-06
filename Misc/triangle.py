@@ -26,7 +26,28 @@ def astrict(n):
         print (i * "*")
         i += 1
     n -= 1
-   
+
+
+def triangle(n):
+    for i in range(1,n+1):
+        x = i
+        l = []
+        while i:
+            l.append(str(x))
+            i -= 1
+        print (" ".join(l))
+
+def revTriangle(n):
+    while n:
+        x = n
+        l = []
+        i = 0
+        while i < x:
+            l.append(str(x))
+            i += 1
+        print (" ".join(l))
+        n -= 1
+
 triangle(5)
 print ()
 revTriangle(5)
