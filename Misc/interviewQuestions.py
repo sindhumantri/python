@@ -21,5 +21,12 @@ ListB = "34 56 45 98 23 45"
 new = ListB.split(" ")
 print (set(new))
 
+def listNumbers(arr):
+    for ele in arr:
+        if arr.index(ele) == ele:
+            print (ele)
+            
+
+listNumbers([1,2,3,3,4,6,6])
 
 
