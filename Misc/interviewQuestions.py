@@ -12,3 +12,14 @@ def removeAdjDiff(arr):
 
 removeAdjDiff([1,2,4,6,8,11,13,14,18,22])
 
+listD = "10.0.0.1/8, 10.10.0.1/8, 10.0.10.1/8, 10.10.10.1/8"
+newList = listD.split(",")
+print (set(newList))
+
+
+ListB = "34 56 45 98 23 45"
+new = ListB.split(" ")
+print (set(new))
+
+
+
