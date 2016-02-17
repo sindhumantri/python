@@ -29,4 +29,24 @@ def listNumbers(arr):
 
 listNumbers([1,2,3,3,4,6,6])
 
+"""How to add + 13 to the given MAC address"""
+
+macAddress = "0e:ab:2e:c4:de:fc"
+def newMacAddress(address, num):
+    x = address.split(":")
+    y = "".join(x)
+    "Converted Hex to Binary"
+    hexToBinary = bin(int(y,16))[2:]
+    binNum = bin(num)
+    add = int(hexToBinary,2) + int(binNum,2)
+    res = hex(add)[2:]
+    if len(res) < 12 :
+        x = '0' + res
+    print (x)
+    
+    
+newMacAddress(macAddress,13)
+
+
+
 
