@@ -114,5 +114,36 @@ lastValidIPAddress(Ip)
 
 
 
+"""find the last IP in this subnet"""
+
+def returnSubnetmask(subnet):
+    l = ['1' for i in range(int(subnet))]
+    if len(l) < 32:
+        for i in range(int(subnet),32):
+            l.append('0')
+    i = 0
+    subnetwork = []
+    while i < len(l):
+        x = int("".join(l[i:i+8]),2)
+        subnetwork.append(str(x))
+        i += 8
+    return (subnetwork)
+
+
+def validIpAddress(ip):
+    address,subnet = ip.split("/")
+    #print (subnet)
+    subnetwork = returnSubnetmask(subnet)
+    addr = address.split(".")
+    networkAddress = [str(int(addr[i]) & int(subnetwork[i])) for i in range(len(addr))]
+    print (".".join(networkAddress))
+        
+            
+Ip = "33.34.45.32/16"
+validIpAddress(Ip)
+#print (returnSubnetmask(16))
+
+
+
 
     
