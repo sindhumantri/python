@@ -63,3 +63,56 @@ def lastValidIPAddress(ip):
     
 lastValidIPAddress(Ip)
 
+
+"""find the last IP in this subnet"""
+
+def returnSubnetmask(subnet):
+    x = ''
+    if int(subnet) == 8:
+        x = bin(0xff0000 << 8)
+    elif int(subnet) == 16:
+        x = bin(0xffff00 << 8)
+    else:
+        x = bin(0xffffff << 8)
+    return list(x[2:])
+
+def returnBinaryIpAddress(ipaddress):
+    ip = ipaddress.split(".")
+    #binaryIp = ''
+    #for ele in ip:
+     #   binaryIp += "{0:08b}".format(int(ele))
+    return [int(x) for x in ip]
+    
+def lastValidIPAddress(ip):
+    ipaddr, subnet = ip.split("/")
+    netMask = returnSubnetmask(subnet)
+    address = returnBinaryIpAddress(ipaddr)
+    #print (netMask)
+    #print (address)
+    i = 0
+    subnet = []
+    while i < len(netMask):
+        x = int("".join(netMask[i:i+8]),2)
+        subnet.append(x)
+        i += 8
+    networkAddress = []
+    for i in range(len(address)):
+        y = subnet[i] & address[i]
+        networkAddress.append(str(y))
+    #print (address)
+    #print (networkAddress)
+    hosts = [str(i) for i in range(int(address[-1]), 255)]
+    networkAddress[-1] = hosts[-1]
+    print ("Valid ip address is: %s " % (".".join(networkAddress)))
+    
+    #print (networkAddress.rstrip("."))
+    
+        
+    
+Ip = "135.227.144.186/24"
+lastValidIPAddress(Ip)
+
+
+
+
+    
