@@ -48,5 +48,18 @@ def newMacAddress(address, num):
 newMacAddress(macAddress,13)
 
 
+"""find the last IP in this subnet"""
+Ip = "135.227.144.186/24"
 
+import ipaddress
+def lastValidIPAddress(ip):
+    ip, subnet = ip.split("/")
+    ipSplit = ip.split(".")
+    ipSplit[3] = "0"
+    networkAddr = ".".join(ipSplit)
+    networkSubnetMask = networkAddr + "/" +subnet
+    ipAddress = [str(x) for x in ipaddress.ip_network(networkSubnetMask).hosts()]
+    print (ipAddress[-1])
+    
+lastValidIPAddress(Ip)
 
