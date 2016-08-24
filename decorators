@@ -1,0 +1,22 @@
+def handle_index_error(func):
+	def wrapper(list):
+		try:
+			return func(list)
+		except IndexError as e:
+			raise Exception("Caught index error")
+	return wrapper
+
+@handle_index_error
+def listIndex(l):
+	size = len(l)
+	print(l[size+1])
+	
+listIndex([1,2,3])
+
+Output:
+=======
+
+Traceback (most recent call last):
+File "python", line 14, in <module>
+File "python", line 6, in wrapper
+Exception: Caught index error
