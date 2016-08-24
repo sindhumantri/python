@@ -64,6 +64,18 @@ def lastValidIPAddress(ip):
 lastValidIPAddress(Ip)
 
 
+# Find the last ipaddress in the given subnet
+from ipaddress import IPv4Network, IPv4Address, IPv4Interface
+import ipaddress
+Ip = "135.227.144.186/24"
+
+addr = IPv4Interface(Ip)
+subnet_addr = addr.network
+address = []
+for addr in IPv4Network(subnet_addr):
+	address.append(addr)
+print(address[-1])
+
 """find the last IP in this subnet"""
 
 def returnSubnetmask(subnet):
