@@ -29,6 +29,24 @@ class Binarytree:
         else:
           self.insert(rt.right, new_node)
 
+	def minimumBST(self, rt):
+		if rt == None:
+			return
+		cur = rt
+		while cur.left:
+			if cur.left:
+				cur = cur.left
+		return cur.value
+	
+	def maximumBST(self, rt):
+		if rt == None:
+			return
+		cur = rt
+		while cur.right:
+			if cur.right:
+				cur = cur.right
+		return cur.value
+		
   def print_inorder(self, rt):
     if rt == None:
       return 
