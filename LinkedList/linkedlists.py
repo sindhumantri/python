@@ -74,6 +74,17 @@ class doublyLinkedList():
           self.head.prev = None
       cur_node = cur_node.next
   
+  	
+	def findLoops(self):
+		fast = self.head
+		slow = self.head
+		while fast.next:
+			slow = slow.next
+			fast = fast.next.next
+			if slow == fast:
+				return True
+		return False
+		
   def printList(self):
     cur_node = self.head
     while cur_node:
