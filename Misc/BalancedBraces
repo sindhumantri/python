@@ -1,0 +1,25 @@
+def balancedBrackets(string):
+	c1 = 0
+	c2 = 0
+	c3 = 0
+	for e in string:
+		if e == '{':
+			c1 += 1
+		elif e == '[':
+			c2 += 1
+		elif e == '(':
+			c3 += 1
+		elif e == '}':
+			c1 -= 1
+		elif e == ']':
+			c2 -= 1
+		elif e == ')':
+			c3 -= 1
+	if c1 == 0 and c2 == 0 and c3 == 0:
+		print("YES")
+	else:
+		print("NO")
+
+balancedBrackets("{{[[(())]]}}")
+balancedBrackets("{{[[(()]]}")
+balancedBrackets("{[[(())]]}")
