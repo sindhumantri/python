@@ -1,0 +1,14 @@
+input = [15,16,19,20,25,1,3,4,5,7,10,14]
+
+def rotationCount(input):
+	last_ele = input[-1]
+	count = 0
+	for ele in input:
+		if ele > last_ele:
+			count += 1
+		else:
+			break
+	return count
+	
+res = rotationCount(input)
+print(res)
