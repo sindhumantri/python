@@ -1,0 +1,25 @@
+def mergeSort(a,b, sizea, sizeb):
+	i = 0
+	j = 0
+	k = 0
+	x = [0 for i in range(sizea+sizeb+2)]
+	while i <= sizea and j <= sizeb:
+		if a[i] < b[j]:
+			x[k] = a[i]
+			i += 1
+		else:
+			x[k] = b[j]
+			j += 1
+		k += 1
+	while i <= sizea:
+		x[k] = a[i]
+		i += 1
+		k += 1
+	while j <= sizeb:
+		x[k] = b[j]
+		j += 1
+		k += 1
+	return x
+	
+res = mergeSort([1,3,5,7], [2,4,6], len([1,3,5,7])-1, len([2,4,6])-1)
+print(res)
