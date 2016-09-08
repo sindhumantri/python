@@ -1,0 +1,13 @@
+def sortAGivenListOfWords(arr):
+	newWords = []
+	for i,e in enumerate(wordArr):
+		s = [i for i in e]
+		s.sort()
+		sortStr = "".join(s)
+		newWords.append((sortStr,i))
+	x = sorted(newWords)
+	for ele in x:
+		print(wordArr[ele[1]])
+
+wordArr = ["cat", "dog", "tac", "god", "act"]
+sortAGivenListOfWords(wordArr)
