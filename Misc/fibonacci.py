@@ -30,6 +30,21 @@ def fibonacci_recursive(number):
   else:
     return fibonacci_recursive(number - 1) + fibonacci_recursive(number -2)
 
+#Generator method of implementing Fibonacci
+
+def fib():
+    a,b = 1,1
+    while 1:
+        yield a
+        a, b = b, a+b
+        
+counter = 0
+for n in fib():
+    print(n)
+    counter += 1
+    if counter == 10:
+        break
+
 print fibonacci_generate(5)
 print fibonacci_iterative(5)
 print fibonacci_recursive(5)
