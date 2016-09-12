@@ -1,0 +1,60 @@
+class stack:
+	def __init__(self):
+		self.list = []
+	
+	def pop(self):
+		if len(self.list) >= 0:
+			return self.list.pop()
+	
+	def min(self):
+		if len(self.list):
+			return self.list[-1][1]
+	
+	def push(self,value):
+		if len(self.list) == 0:
+			self.list.append((value,value))
+		else:
+			min = self.list[-1][1]
+			if value < min:
+				min = value
+			self.list.append((value, min))
+			
+	def peak(self):
+		if len(self.list):
+			return self.list[-1][0]
+			
+	def isEmpty(self):
+		return self.list == []
+
+class MyQueue:
+	def __init__(self):
+		self.s1 = stack()
+		self.s2 = stack()
+	
+	def nQueue(self,value):
+		self.s1.push(value)
+		#print(self.s1.list)
+	
+	def dQueue(self):
+		while len(self.s1.list) > 0:
+			p = self.s1.pop()
+			self.s2.push(p[0])
+		res = self.s2.pop()
+		while len(self.s2.list) > 0:
+			p1 = self.s2.pop()
+			self.nQueue(p1[-1])
+		return res
+	
+s = stack()
+s.push(10)
+s.push(20)
+s.push(5)
+s.push(40)
+#res = s.min()
+q = MyQueue()
+q.nQueue(30)
+q.nQueue(40)
+q.nQueue(60)
+q.nQueue(3)
+res = q.dQueue()
+print(res)
