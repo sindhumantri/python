@@ -1,0 +1,31 @@
+"""Comeup with a class or a datastructure in python to hold n person records where each person record comprises of the following info:
+person id (e.g., 1,2,3, etc)
+person name (e.g., John Doe, Mary Jane etc)
+Ability to hold properties:
+Favorite color for the life time of the person at the granularity of an year (e.g., 21 years of age - red, 22 years of age, blue, etc). Can assume that we need to track these details upto 100 years of age.
+Salary for the life time of the person at the granularity of an year (e.g., 21 years of age - 50K, 22 years of age - 100K etc). Can assume that we need to track these details upto 100 years of age.
+Implement the following method:
+getProperty(property=salary or fav, color, person Id, start year, end year) that returns a list of all values for the property between start and end years (both included).
+Keep the implementation generic enough that adding new properties should be easy."""
+
+import random
+class getProperty:
+	
+	colors = ["red", "blue", "orange", "green", "yellow", "purple"]
+	salary = [10000, 20000, 4000, 60000, 50000, 800000, 12000]
+	def __init__(self, person_id, start_year,end_year):
+		self.person_id = person_id
+		self.start_year = start_year
+		self.end_year = end_year
+	
+	def getColor(self, property="colors"):
+		for i in range(self.start_year, self.end_year):
+			print( random.choice(self.colors))
+	
+	def getSalary(self, property="salary"):
+		for i in range(self.start_year, self.end_year):
+			print(random.choice(self.salary))
+	
+personA = getProperty("sindhu", 24, 27)
+personA.getColor()
+personA.getSalary()
