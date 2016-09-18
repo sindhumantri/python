@@ -1,0 +1,18 @@
+def isIntersected(l1, r1, l2, r2):
+	#checking side by side rectangles
+	if l2[0] > r1[0] or l1[0] > r2[0]:
+		return False
+	#checking one top of other rectangle
+	if l1[1] < r2[1] or l2[1] < r1[1]:
+		return False
+	return True
+
+l1 = (0,10)
+r1 = (15,0)
+l2 = (20,20)
+r2 = (15,0)
+res = isIntersected(l1,r1,l2,r2)
+if res:
+	print("Rectangles are intersected")
+else:
+	print("rectangles are not intersected")
