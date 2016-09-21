@@ -10,6 +10,19 @@ if len(y) == len(substr):
     print ([int(i) for i in list(substr)])
 
 
+temp = []
+i = 0
+count = 0
+while i < len(x):
+	if x[i] != 0:
+		temp.append(x[i])
+	else:
+		count += 1
+	i += 1
+
+res = temp + [0]*4
+print(res)
+
 x = [1,9,8, 4, 0, 0, 2, 7, 0, 6, 0]
 count = 0
 for i in x:
