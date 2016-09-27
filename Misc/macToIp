@@ -1,0 +1,33 @@
+#macaddress conversion
+input
+"""0F:9E:97:F6:B2:C5 --> 1
+82:D9:77:78:E4:D2 ---> 6
+0C:B7:27:53:7E:10 ---> 2"""
+
+output
+0F:9E:97:F6:B2:C5 -----> 1.246.178.197
+82:D9:77:78:E4:D2 -----> 6.120.228.210
+0C:B7:27:53:7E:10 -----> 2.83.126.16"""
+
+def macAddress(arr):
+	ipaddress = []
+	for addr in arr:
+		ip = ""
+		s = addr.split(":")
+		oui = s[:3]
+		last = s[3:]
+		if "0F:9E:97" == ":".join(oui):
+			ip += "1."
+		elif "82:D9:77" == ":".join(oui):
+			ip += "6."
+		elif "0C:B7:27" == ":".join(oui):
+			ip += "2."
+		for ele in last:
+			num = int(ele,16)
+			ip += str(num) + "."
+		ipaddress.append(ip)
+	for i in range(len(ipaddress)):
+		ipaddr = ipaddress[i]
+		print("%s -----> %s" % (arr[i], ipaddr.rstrip(".")))
+
+res = macAddress(["0F:9E:97:F6:B2:C5","82:D9:77:78:E4:D2", "0C:B7:27:53:7E:10"])
