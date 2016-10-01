@@ -1,0 +1,13 @@
+#Rotate the list by 2 times rotationalTime*O(n) below example is d=2*O(n)
+def rotateByTwo(arr):
+	d = 2
+	n = len(arr)
+	i = 0
+	while d > 0:
+		for i in range(n-1):
+			arr[i],arr[i+1] = arr[i+1],arr[i]
+		d -= 1
+	return arr
+
+res = rotateByTwo([1,2,5,3,7])
+print(res)
