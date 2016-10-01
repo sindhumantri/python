@@ -36,3 +36,8 @@ def reachCount(x,y,a,b):
 	
 res = reachCount(1,2,1,2)
 print(res)
+
+#Sort the dictionary 
+d = {"hello":1, "good": 5, "puppy": 2}
+sorted(d.values(),reverse=True)
+print(d)
