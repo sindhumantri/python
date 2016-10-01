@@ -1,0 +1,38 @@
+def stringCount(string):
+	new_string = []
+	count = len(string)
+	index = 0
+	while index <= count-1:
+		length = 1
+		while index < count-1 and string[index] == string[index+1]:
+			length += 1
+			index += 1
+		new_string.append((string[index], length))
+		index += 1
+	order = ""
+	for k,v in new_string:
+		if v > 1:
+			order += k + str(v)
+		else:
+			order += k
+	return order
+
+res = stringCount("aaabbbcccddeeeaaaef")
+print(res)
+
+def reachCount(x,y,a,b):
+	new_list = []
+	new_list.append((x,y))
+	while len(new_list) > 0:
+		pair = new_list.pop()
+		if pair == (a,b):
+			return "YES"
+		total = pair[0] + pair[1]
+		if total < a:
+			new_list.append((total, pair[1]))
+		if total < b:
+			new_list.append((pair[0], total))
+	return "NO"
+	
+res = reachCount(1,2,1,2)
+print(res)
