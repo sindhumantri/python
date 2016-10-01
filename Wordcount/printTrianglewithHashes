@@ -1,0 +1,19 @@
+"""Input:
+-------
+3
+output:
+-------
+#
+##
+###
+""""
+
+def printhashes(n):
+	for i in range(n):
+		string = ""
+		row_num = i+1
+		spaces = n-row_num
+		hashes = row_num
+		string += ""*spaces + "#"*hashes
+		print(string)
+printhashes(3)
