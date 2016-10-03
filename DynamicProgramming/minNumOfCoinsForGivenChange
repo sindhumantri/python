@@ -1,0 +1,22 @@
+#Coin change problem using recursion
+
+cache = [None]*26
+
+def coinChange(coins, change):
+	minCoins = change
+	if change in coins:
+		cache[change-1] = 1
+		return 1
+	elif cache[change-1] != None:
+		return cache[change-1]
+	else:
+		for i in [c for c in coins if c<=change]:
+			numCoins = 1 + coinChange(coins, change-i)
+			if numCoins < minCoins:
+				minCoins = numCoins
+				cache[change-1] = minCoins
+	return minCoins
+
+res = coinChange([1,5,10,25], 26)
+print(res)
+
