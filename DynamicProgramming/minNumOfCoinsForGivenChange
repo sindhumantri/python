@@ -20,3 +20,21 @@ def coinChange(coins, change):
 res = coinChange([1,5,10,25], 26)
 print(res)
 
+#Dynamic programming using 2 dimentional array
+def coinChange2DArray(change, centsreturned, minArr):
+	#array of cents
+	for cents in range(len(minArr)):
+		coinChange = cents
+		#calculating minimum coins required for each dinomination
+		for j in [c for c in change if c <= cents]:
+			if minArr[cents-j] + 1 < coinChange:
+				coinChange = minArr[cents-j] + 1
+		minArr[cents] = coinChange
+	return minArr[centsreturned]
+
+change = [1,5,10]
+amount = 10
+minArr = [0]*(amount+1)
+
+res = coinChange2DArray(change,amount,minArr)
+print(res)
