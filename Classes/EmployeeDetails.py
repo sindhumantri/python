@@ -17,3 +17,7 @@ def e_sort(emp):
 	
 my_emp = sorted(emplyee, key=e_sort, reverse=True)
 print(my_emp)
+
+
+my_emp = sorted(emplyee, key=lambda e:e.age)
+print(my_emp)
