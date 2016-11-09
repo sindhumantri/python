@@ -278,4 +278,58 @@ print("---------------")
 l.removeDuplicates()
 l.printList()
 			
-				
+"""Remove all occurrences of a value in a singly linked list."""
+
+class Node:
+	def __init__(self,val):
+		self.val = val
+		self.next = None
+
+class LinkedList:
+	def __init__(self):
+		self.head = None
+		self.tail = None
+	
+	def insertAtTail(self, value):
+		if type(value) == Node:
+			new_node = value
+		else:
+			new_node = Node(value)
+		if self.head == None:
+			self.head = new_node
+			self.tail = new_node
+		else:
+			self.tail.next = new_node
+			self.tail = new_node
+	
+	def printList(self):
+		cur = self.head
+		while cur:
+			print(cur.val)
+			cur = cur.next
+	
+	def detectLoops(self):
+		slow = self.head
+		fast = self.head
+		while fast.next:
+			fast = fast.next.next
+			slow = slow.next
+			if fast == slow:
+				return True
+		return False
+			
+
+l = LinkedList()
+n1 = Node(10)
+n2 = Node(20)
+n3 = Node(30)
+n4 = Node(40)
+n5 = Node(20)
+l.insertAtTail(n1)
+l.insertAtTail(n2)
+l.insertAtTail(n3)
+l.insertAtTail(n4)
+l.insertAtTail(n5)
+l.insertAtTail(n2)
+res = l.detectLoops()
+print(res)				
