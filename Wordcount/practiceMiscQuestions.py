@@ -333,3 +333,86 @@ l.insertAtTail(n5)
 l.insertAtTail(n2)
 res = l.detectLoops()
 print(res)				
+
+
+"""Add/remove a node from a doubly linked list."""
+
+class Node:
+	def __init__(self,val):
+		self.val = val
+		self.next = None
+		self.prev = None
+
+class LinkedList:
+	def __init__(self):
+		self.head = None
+		self.tail = None
+	
+	def insertAtTail(self, value):
+		new_node = Node(value)
+		if self.head == None:
+			self.head = new_node
+			self.tail = new_node
+		else:
+			self.tail.next = new_node
+			new_node.prev = self.tail
+			self.tail = new_node
+	
+	def deleteNode(self, value):
+		cur = self.head
+		while cur:
+			if cur.val == value:
+				#current node is head node
+				if cur == self.head:
+					self.head.next = cur.next
+					self.head.prev = None
+				#current node is not the head node
+				else:
+					cur.prev.next = cur.next
+					if cur.next:
+						cur.next.prev = cur.prev
+					if cur == self.tail:
+						self.tail = cur.prev
+			cur = cur.next
+					
+	def insertNewNode(self, value, position):
+		cur = self.head
+		new_node = Node(value)
+		if position == 0:
+			new_node.next = self.head
+			self.head.prev = new_node
+			self.head = new_node
+		else:
+			while position > 0:
+				cur = cur.next
+				position -= 1
+			temp = cur.next
+			cur.next = new_node
+			new_node.prev = cur
+			new_node.next = temp
+			if temp != None:
+				temp.prev = new_node
+			else:
+				self.tail = new_node
+
+	def printList(self):
+		cur = self.head
+		while cur:
+			print(cur.val)
+			cur = cur.next
+
+l = LinkedList()
+l.insertAtTail(10)
+l.insertAtTail(20)
+l.insertAtTail(20)
+l.insertAtTail(30)
+l.insertAtTail(40)
+l.insertAtTail(50)
+l.printList()
+print("-----Insert Node-------")
+l.insertNewNode(60, 2)
+l.printList()
+print("----Delete Node------")
+l.deleteNode(60)
+l.printList()
+
