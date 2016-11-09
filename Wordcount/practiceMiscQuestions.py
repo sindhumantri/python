@@ -278,7 +278,7 @@ print("---------------")
 l.removeDuplicates()
 l.printList()
 			
-"""Remove all occurrences of a value in a singly linked list."""
+"""Detect a cycle in a linked list."""
 
 class Node:
 	def __init__(self,val):
