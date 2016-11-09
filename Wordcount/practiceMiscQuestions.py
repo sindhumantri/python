@@ -416,3 +416,13 @@ print("----Delete Node------")
 l.deleteNode(60)
 l.printList()
 
+"""Find highest set bit in an integer.
+e.g 6- 0110"""
+c = 0
+n = 6
+while n:
+	if n&1:
+		c += 1
+	n = n >> 1
+
+print(c)
