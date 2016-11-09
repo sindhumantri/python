@@ -101,3 +101,105 @@ def fibonacciIterative(n):
 	return l
 
 print(fibonacciIterative(3))
+
+"""Find the in-order successor of a node in a BST where each node has a parent pointer in addition to left/right child pointers."""
+"""Note- 2 conditions for finding the successor
+1. If the given node has right subtree:
+	we have to find the leftmost node in the right subtree or find the min 
+	in a right subtree
+2. If the given node has no right subtree:
+	we have to go right most subtree and find the deepest ancestor where 
+	the given node is in right subtree
+Note- We have to look at the ancestor only if the node no right subtree"""
+
+
+class Node:
+	def __init__(self, val):
+		self.val = val
+		self.left = None
+		self.right = None
+
+#Function to find the successor
+class BinaryTree:
+	def __init__(self):
+		self.root = None
+	
+	def insertion(self, rt, newNode):
+		if rt.val > newNode.val:
+			if rt.left == None:
+				rt.left = newNode
+			else:
+				self.insertion(rt.left, newNode)
+		else:
+			if rt.right == None:
+				rt.right = newNode
+			else:
+				self.insertion(rt.right, newNode)
+	
+	def inOrder(self, rt):
+		if rt == None:
+			return
+		self.inOrder(rt.left)
+		print(rt.val)
+		self.inOrder(rt.right)
+	
+	def search(self,rt,value):
+		cur = rt
+		if cur == None:
+			return None
+		elif cur.val == value:
+			return cur
+		elif cur.val > value:
+			return self.search(cur.left, value)
+		else:
+			return self.search(cur.right, value)
+	
+	def findMin(self, rt):
+		if rt == None:
+			return None
+		while rt.left != None:
+			rt = rt.left
+		return rt
+		
+	def findSuccessor(self, rt, value):
+		current = self.search(rt, value)
+		if current == None:
+			return None
+		# if the node has right subtree
+		if current.right != None:
+			return self.findMin(current.right)
+		# if node has no right subtree
+		else:
+			successor = None
+			ancestor = rt
+			while current.val != ancestor.val:
+				if current.val < ancestor.val:
+					successor = ancestor
+					ancestor = ancestor.left
+				else:
+					ancestor = ancestor.right
+			return successor
+			
+		
+b = BinaryTree()
+b.root = Node(15)
+b.insertion(b.root, Node(10))
+b.insertion(b.root, Node(8))
+b.insertion(b.root, Node(6))
+b.insertion(b.root, Node(12))
+b.insertion(b.root, Node(11))
+b.insertion(b.root, Node(20))
+b.insertion(b.root, Node(17))
+b.insertion(b.root, Node(16))
+b.insertion(b.root, Node(25))
+b.insertion(b.root, Node(27))
+b.inOrder(b.root)
+print("----Search the node-----")
+res = b.search(b.root, 12)
+print(res.val)
+print("-----Find Minimum-----")
+res = b.findMin(b.root)
+print(res.val)
+print("---Find successor------")
+res = b.findSuccessor(b.root, 15)
+print(res.val)
