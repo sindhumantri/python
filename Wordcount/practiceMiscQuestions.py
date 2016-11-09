@@ -203,3 +203,79 @@ print(res.val)
 print("---Find successor------")
 res = b.findSuccessor(b.root, 15)
 print(res.val)
+
+
+"""Remove all occurrences of a value in a singly linked list."""
+
+class Node:
+	def __init__(self,val):
+		self.val = val
+		self.next = None
+
+class LinkedList:
+	def __init__(self):
+		self.head = None
+		self.tail = None
+	
+	def insertAtTail(self, value):
+		new_node = Node(value)
+		if self.head == None:
+			self.head = new_node
+			self.tail = new_node
+		else:
+			self.tail.next = new_node
+			self.tail = new_node
+	
+	def printList(self):
+		cur = self.head
+		while cur:
+			print(cur.val)
+			cur = cur.next
+	
+	def removeDuplicate(self):
+		dupList = []
+		cur = self.head
+		prev = None
+		while cur:
+			if not cur.val in dupList:
+				dupList.append(cur.val)
+				prev = cur
+			else:
+				prev.next = cur.next
+			cur = cur.next
+
+	def removedup(self, prevNode, deleteNode):
+		if prevNode == None:
+			self.head = deleteNode.next
+		else:
+			prevNode.next = deleteNode.next
+		del deleteNode
+		
+	def removeDuplicates(self):
+		cur1 = self.head
+		while cur1:
+			prev = cur1
+			cur2 = cur1.next
+			while cur2:
+				nextNode = cur2.next
+				if cur2.val == cur1.val:
+					removedup(prev, cur2)
+				prev = cur2
+				cur2 = nextNode
+			cur1 = cur1.next
+	
+
+l = LinkedList()
+l.insertAtTail(10)
+l.insertAtTail(20)
+l.insertAtTail(20)
+l.insertAtTail(20)
+l.insertAtTail(40)
+l.insertAtTail(50)
+l.removeDuplicate()
+l.printList()
+print("---------------")
+l.removeDuplicates()
+l.printList()
+			
+				
