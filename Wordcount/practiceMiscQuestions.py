@@ -418,6 +418,15 @@ l.printList()
 
 """Find highest set bit in an integer.
 e.g 6- 0110"""
+n = 2
+b = 0
+while n > 0:
+	b += 1
+	n = n >> 1
+	print(n)
+print(b)
+
+"""Find the number of bits set in an integer."""
 c = 0
 n = 6
 while n:
